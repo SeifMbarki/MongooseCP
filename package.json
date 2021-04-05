@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "back": "nodemon"
+    "dev": "nodemon server",
+    "start": "concurrently \"npm run dev\" \"cd client && npm start\""
   },
   "author": "",
   "license": "ISC",

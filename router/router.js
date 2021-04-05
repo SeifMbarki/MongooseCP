@@ -6,6 +6,7 @@ const {
   GetContact,
   DeleteContact,
   UpdateContact,
+  Getall,
 } = require("../Controllers/contactController");
 
 //straight to the shit now
@@ -19,9 +20,9 @@ router = express.Router();
  */
 router.post("/", PostContact);
 /**
- *  @desc : get Contacts
- * @path : http://localhost:5000/api/contacts
- * @method : put
+ *  @desc : get Contact by id
+ * @path : http://localhost:5000/api/contact
+ * @method : get
  * @data : req.params._id
  * @access : public
  */
@@ -42,4 +43,12 @@ router.delete("/:id", DeleteContact);
  * @access : public/private
  */
 router.put("/:_id", UpdateContact);
+/**
+ *  @desc : get allContacts
+ * @path : http://localhost:5000/api/contact
+ * @method : get
+ * @data :
+ * @access : public
+ */
+router.get("/", Getall);
 module.exports = router;

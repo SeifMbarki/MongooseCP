@@ -15,7 +15,7 @@ app.use(express.json());
 //this part contains the main path
 app.use("/api/contact", require("./router/router"));
 //here we're creating our port
-const port = 5000;
+const port = process.env.PORT;
 
 // create server
 app.listen(port, (err) => {

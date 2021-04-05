@@ -24,7 +24,6 @@ exports.PostContact = async (req, res) => {
   }
 };
 exports.GetContact = async (req, res) => {
-  console.log(req.params);
   try {
     const contactSearched = await contactModel.findOne(req.params);
 
@@ -39,7 +38,7 @@ exports.GetContact = async (req, res) => {
 };
 exports.DeleteContact = async (req, res) => {
   try {
-    await contactModel.deleteOne(req.params);
+    await contactModel.findByIdAndDelete(req.params);
     res.status(200).send({ msg: "contact deleted successfully" });
   } catch (error) {
     res.status(400).send({ msg: "can't delete contact please verify ID" });
@@ -63,5 +62,14 @@ exports.UpdateContact = async (req, res) => {
       .send({ msg: "contact updated successfully", contactUpdated });
   } catch (error) {
     res.status(400).send({ msg: "can't update contact please verify ID" });
+  }
+};
+exports.Getall = async (req, res) => {
+  try {
+    const contactS = await contactModel.find({});
+
+    res.status(200).send({ contactS });
+  } catch (error) {
+    res.status(400).send({ msg: "an error occured try again" });
   }
 };
